@@ -9,7 +9,7 @@ phpfpm:
   volumes_from:
     - data
   links:
-    - mysql
+    - postgres
 nginx:
   container_name: nginx_workshop
   image: nginx
@@ -23,19 +23,19 @@ nginx:
     - "80:80"
   links:
     - phpfpm
-mysql:
-  container_name: mysql_workshop
-  image: mysql
+postgres:
+  container_name: postgres_workshop
+  image: postgres
   environment:
-    MYSQL_ROOT_PASSWORD: symfony
-    MYSQL_USER: symfony
-    MYSQL_DATABASE: symfony
-  ports:
-    - 3306:3306 
+    POSTGRES_PASSWORD: symfony
+    POSTGRES_DB: symfony
+    POSTGRES_USER: symfony
+  volumes_from:
+    - data
 data:
   container_name: busybox_workshop
   image: busybox
   volumes:
-    - /var/lib/mysql/data
+    - /var/lib/postgresql/data
   tty: true
   stdin_open: true
