@@ -1,6 +1,6 @@
 phpfpm:
   container_name: php_workshop
-  image: delirehberi/php7-symfony:7.1
+  image: bykclk/php-symfony
   tty: true
   volumes:
     - /var/www/:/var/www
