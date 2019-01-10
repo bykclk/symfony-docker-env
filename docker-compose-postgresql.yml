@@ -32,6 +32,8 @@ postgres:
     POSTGRES_USER: symfony
   volumes_from:
     - data
+  ports:
+    - 5432:5432 
 data:
   container_name: busybox_workshop
   image: busybox
